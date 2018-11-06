@@ -26,43 +26,51 @@ public class MainController {
                                 @PathVariable("timeInterval") Integer timeInterval,
                                 @PathVariable("stepCount") Integer stepCount) {
     
-    User user;
+    User user = new User();
+    user.setUserId(userId);
+    int step = getCurrentStepCount(userId);
+    user.setStep(day, step + stepCount);
+//    User user;
+//    try {
+////      synchronized (this) {
+//      user = userRepository.findById(userId).get();
+////      }
+//    } catch (NoSuchElementException nsee) {
+//      user = new User();
+//      user.setUserId(userId);
+//    }
+//    user.addStep(day, stepCount);
     try {
-//      synchronized (this) {
-      user = userRepository.findById(userId).get();
-//      }
-    } catch (NoSuchElementException nsee) {
-      user = new User();
-      user.setUserId(userId);
+      userRepository.save(user);
+    } catch (Exception e) {
+      System.out.println("Error while writing into db");
     }
-    user.addStep(day, stepCount);
-    userRepository.save(user);
     return "Success";
 //    return user.getUserId() + " : " + user.getCurrentStepCount();
   }
   
   
   @GetMapping(path = "/current/{userId}")
-  public @ResponseBody String getCurrentStepCount(@PathVariable("userId") Integer userId) {
+  public @ResponseBody Integer getCurrentStepCount(@PathVariable("userId") Integer userId) {
     User user;
     try {
       user = userRepository.findById(userId).get();
     } catch (NoSuchElementException nsee) {
-      return String.valueOf(-1);
+      return 0;
     }
-    return String.valueOf(user.getCurrentStepCount());
+    return user.getCurrentStepCount();
   }
   
   @GetMapping(path = "/single/{userId}/{day}")
-  public @ResponseBody String getSingleStepCount(@PathVariable("userId") Integer userId,
+  public @ResponseBody Integer getSingleStepCount(@PathVariable("userId") Integer userId,
                                                   @PathVariable("day") Integer day) {
     User user;
     try {
       user = userRepository.findById(userId).get();
     } catch (NoSuchElementException nsee) {
-      return String.valueOf(-1);
+      return 0;
     }
-    return String.valueOf(user.getSingleStepCount(day));
+    return user.getSingleStepCount(day);
   }
   
   @GetMapping(path = "/range/{userId}/{startDay}/{numDays}")
