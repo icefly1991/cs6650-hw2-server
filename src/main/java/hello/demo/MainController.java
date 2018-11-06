@@ -31,14 +31,14 @@ public class MainController {
 //      synchronized (this) {
       user = userRepository.findById(userId).get();
 //      }
-      user.addStep(day, stepCount);
     } catch (NoSuchElementException nsee) {
       user = new User();
       user.setUserId(userId);
-      user.setStep(day, stepCount);
     }
+    user.addStep(day, stepCount);
     userRepository.save(user);
-    return user.getUserId() + " : " + user.getCurrentStepCount();
+    return "Success";
+//    return user.getUserId() + " : " + user.getCurrentStepCount();
   }
   
   

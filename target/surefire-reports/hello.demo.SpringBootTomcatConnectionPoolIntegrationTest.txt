@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: hello.demo.SpringBootTomcatConnectionPoolIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.696 s - in hello.demo.SpringBootTomcatConnectionPoolIntegrationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.795 s - in hello.demo.SpringBootTomcatConnectionPoolIntegrationTest
