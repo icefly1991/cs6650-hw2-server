@@ -74,11 +74,11 @@
         </dependency>
 
 		<!--lambda-->
-		<dependency>
-			<groupId>com.amazonaws.serverless</groupId>
-			<artifactId>aws-serverless-java-container-spring</artifactId>
-			<version>[0.1,)</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.amazonaws.serverless</groupId>-->
+			<!--<artifactId>aws-serverless-java-container-spring</artifactId>-->
+			<!--<version>[0.1,)</version>-->
+		<!--</dependency>-->
     </dependencies>
 
 	<build>
@@ -88,29 +88,29 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!--shade for lambda-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<createDependencyReducedPom>false</createDependencyReducedPom>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<artifactSet>
-								<excludes>
-									<exclude>org.apache.tomcat.embed:*</exclude>
-								</excludes>
-							</artifactSet>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-shade-plugin</artifactId>-->
+				<!--<version>2.3</version>-->
+				<!--<configuration>-->
+					<!--<createDependencyReducedPom>false</createDependencyReducedPom>-->
+				<!--</configuration>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<phase>package</phase>-->
+						<!--<goals>-->
+							<!--<goal>shade</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<artifactSet>-->
+								<!--<excludes>-->
+									<!--<exclude>org.apache.tomcat.embed:*</exclude>-->
+								<!--</excludes>-->
+							<!--</artifactSet>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 		</plugins>
 
 	</build>
